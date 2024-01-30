@@ -2,44 +2,16 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on merge
-
 'on':
   push:
     branches:
       - main
-
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Install Vite
-        run: npm install -g create-vite  # Instala Vite de forma global, ajusta según sea necesario
-
-      - name: Create Vite App (if not already installed)
-        run: create-vite my-app --template react
-
-      - name: Change Directory to Vite App
-        run: cd my-app
-
-      - name: Install Vite Dependencies
-        run: npm install
-
-      - name: Build for Production
-        run: npm run build
-
-      - name: Deploy to Firebase
-        uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: actions/checkout@v4
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PRUEBAELIMINAR_EBAAA }}'
