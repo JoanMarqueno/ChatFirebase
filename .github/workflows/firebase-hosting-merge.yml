@@ -23,8 +23,20 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Install Vite
+        run: npm install -g create-vite  # Instala Vite de forma global, ajusta según sea necesario
+
+      - name: Create Vite App (if not already installed)
+        run: create-vite my-app --template react
+
+      - name: Change Directory to Vite App
+        run: cd my-app
+
+      - name: Install Vite Dependencies
+        run: npm install
+
       - name: Build for Production
-        run: vite build
+        run: npm run build
 
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
