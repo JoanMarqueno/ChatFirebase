@@ -1,12 +1,11 @@
 // src/App.js
 import { useState, useEffect } from 'react';
 import './App.css';
-import { app } from './firebase';
 import { saveMessage } from './firebase';
 import { getMessages } from './firebase';
 
 function App() {
-  app 
+
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
 

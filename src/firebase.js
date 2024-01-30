@@ -1,14 +1,22 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, query, orderBy, getDocs } from 'firebase/firestore/lite';
+import dotenv from 'dotenv';
+dotenv.config();
+
+// Load environment variables from .env file
+
+
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA3w-w_54zwmuRbvUBo1HqVfq45noIYiH4",
-    authDomain: "pruebaeliminar-ebaaa.firebaseapp.com",
-    projectId: "pruebaeliminar-ebaaa",
-    storageBucket: "pruebaeliminar-ebaaa.appspot.com",
-    messagingSenderId: "646342597965",
-    appId: "1:646342597965:web:7935c42704373a09bd6b04"
+    apiKey: import.meta.env.REACT_APP_FIREBASE_APIKEY,
+    authDomain: import.meta.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+    projectId: import.meta.env.REACT_APP_FIREBASE_PROJECTID,
+    storageBucket: import.meta.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+    messagingSenderId: import.meta.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
+    appId: import.meta.env.REACT_APP_FIREBASE_APPID
 };
+
+
 
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
